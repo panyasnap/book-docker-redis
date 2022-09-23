@@ -1,0 +1,15 @@
+services:
+  redis:
+    image: redis
+    volumes:
+      - ./data:/data
+  book:
+    build:  ./book
+    ports:
+      - 3000:3000
+  counter:
+    build: ./counter
+    ports:
+      - 1234:1234
+    depends_on:
+      - redis
